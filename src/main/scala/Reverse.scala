@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Reverse {
+private object Reverse {
     def apply[A](v: Seq[A], first: Int, last: Int) {
         var __first = first; var __last = last
 

@@ -8,7 +8,7 @@ package com.github.okomok
 package gine
 
 
-object Annotation {
+private object Annotation {
 
 
     /**

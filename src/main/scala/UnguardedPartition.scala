@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object UnguardedPartition {
+private object UnguardedPartition {
     def apply[A](* : Seq[A], first: Int, last: Int, __pivot: A, __comp: Ordering[A]): Int = {
         var __first = first; var __last = last
 

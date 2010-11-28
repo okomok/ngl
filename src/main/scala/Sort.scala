@@ -8,7 +8,7 @@ package com.github.okomok
 package gine
 
 
-object Sort {
+private object Sort {
     def apply[A](v: Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         IntroSort(v, __first, __last, __comp)
     }

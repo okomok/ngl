@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object ForEach {
+private object ForEach {
     def apply[A, F <: (A => Any)](* : Seq[A], first: Int, __last: Int, __f: F): F = {
         var __first = first
         while (__first != __last) {

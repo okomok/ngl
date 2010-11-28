@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object IsHeap {
+private object IsHeap {
     def apply[A](v: Seq[A], __first: Int, __last: Int, __comp: Ordering[A]): Boolean = {
         __apply(v, __first, __comp, __last - __first)
     }

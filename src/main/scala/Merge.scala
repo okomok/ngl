@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Merge {
+private object Merge {
     def apply[A](v1 : Seq[A], first1: Int, __last1: Int, v2 : Seq[A], first2: Int, __last2: Int, ^ : Seq[A], result: Int, __comp: Ordering[A]): Int = {
         var __first1 = first1
         var __first2 = first2
@@ -55,7 +55,7 @@ object Merge {
 }
 
 
-object MergeSortWithBuffer {
+private object MergeSortWithBuffer {
     val CHUNK_SIZE = 7
 
     def apply[A](* : Seq[A], __first: Int, __last: Int, ^ : Seq[A], __buffer: Int, __comp: Ordering[A]) {

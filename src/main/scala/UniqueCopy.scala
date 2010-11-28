@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object UniqueCopy {
+private object UniqueCopy {
     def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_pred: (A, B) => Boolean = EqualTo): Int = {
         var __first = first
         var __result = result

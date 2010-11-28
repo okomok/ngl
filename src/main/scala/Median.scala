@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Median {
+private object Median {
     def apply[A](__a: A, __b: A, __c: A, __comp: Ordering[A]): A = {
         if (__comp.lt(__a, __b)) {
             if (__comp.lt(__b, __c)) {

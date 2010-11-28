@@ -8,13 +8,13 @@ package com.github.okomok
 package gine
 
 
-object Count {
+private object Count {
     def apply[A](v: Seq[A], __first: Int, __last: Int, e: Any): Int = {
         CountIf(v, __first, __last, (_: A) == e)
     }
 }
 
-object CountIf {
+private object CountIf {
     def apply[A](v: Seq[A], __first: Int, __last: Int, __pred: A => Boolean): Int = {
         var __n = 0
         ForEach(v, __first, __last, { (e: A) => if (__pred(e)) __n += 1 })

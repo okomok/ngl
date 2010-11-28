@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object LowerBound {
+private object LowerBound {
     def apply[A](* : Seq[A], first: Int, __last: Int, __val: A, __comp: Ordering[A]): Int = {
         var __first = first
 
@@ -58,7 +58,7 @@ object LowerBound {
     }
 }
 
-object UpperBound {
+private object UpperBound {
     def apply[A](* : Seq[A], first: Int, __last: Int, __val: A, __comp: Ordering[A]): Int = {
         LowerBound(*, first, __last, __val, new Ordering[A] { override def compare(x: A, y: A) = - __comp.compare(y, x) })
     }

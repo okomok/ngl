@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object SwapRanges {
+private object SwapRanges {
     def apply[A](v1: Seq[A], first1: Int, __last1: Int, v2: Seq[A], first2: Int): Int = {
         var __first1 = first1
         var __first2 = first2

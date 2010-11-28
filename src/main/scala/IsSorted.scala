@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object IsSorted {
+private object IsSorted {
     def apply[A](* : Seq[A], first: Int, __last: Int, __comp: Ordering[A]): Boolean = {
         var __first = first
 

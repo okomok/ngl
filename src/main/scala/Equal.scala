@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Equal {
+private object Equal {
     def apply[A1, A2](v1: Seq[A1], first1: Int, __last1: Int, v2: Seq[A2], first2: Int, __binary_pred: (A1, A2) => Boolean = EqualTo): Boolean = {
         var __first1 = first1
         var __first2 = first2

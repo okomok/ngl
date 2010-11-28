@@ -34,14 +34,14 @@ package com.github.okomok
 package gine
 
 
-object LexicographicalCompare {
+private object LexicographicalCompare {
     def apply[A](v1: Seq[A], first1: Int, __last1: Int, v2: Seq[A], first2: Int, __last2: Int, __comp: Ordering[A]): Boolean = {
         if (LexicographicalCompare3way(v1, first1, __last1, v2, first2, __last2, __comp) < 0) true else false
     }
 }
 
 
-object LexicographicalCompare3way {
+private object LexicographicalCompare3way {
     def apply[A](v1: Seq[A], first1: Int, __last1: Int, v2: Seq[A], first2: Int, __last2: Int, __comp: Ordering[A]): Int = {
         var __first1 = first1
         var __first2 = first2

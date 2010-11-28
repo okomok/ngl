@@ -19,8 +19,8 @@ package object gine {
     def adjacent_find[A](v: Seq[A], first: Int, last: Int): Int = AdjacentFind(v, first, last)
     def adjacent_find_if[A](v: Seq[A], first: Int, last: Int)(binary_pred: (A, A) => Boolean): Int = AdjacentFind(v, first, last, binary_pred)
 
-    def lower_bound[A](v: Seq[A], first: Int, last: Int, value: A)(implicit c: Ordering[A]): Int = LowerBound(v, first, last, value, c)
-    def upper_bound[A](v: Seq[A], first: Int, last: Int, value: A)(implicit c: Ordering[A]): Int = UpperBound(v, first, last, value, c)
+    def lower_bound[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Int = LowerBound(v, first, last, value, c)
+    def upper_bound[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Int = UpperBound(v, first, last, value, c)
 
     def copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int): Int = Copy(v, first, last, ^, result)
     def copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(pred: A => Boolean): Int = CopyIf(v, first, last, ^, result, pred)
@@ -40,10 +40,10 @@ package object gine {
 
     def fill[A](v: Seq[A], first: Int, last: Int)(value: A): Unit = Fill(v, first, last, value)
 
-    def find[A](v: Seq[A], first: Int, last: Int, value: Any): Int = Find(v, first, last, value)
+    def find[A](v: Seq[A], first: Int, last: Int)(value: Any): Int = Find(v, first, last, value)
     def find_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = FindIf(v, first, last, pred)
 
-    def for_each[A, F <: (A => Any)](v: Seq[A], first: Int, last: Int, f: F): F = ForEach(v, first, last, f)
+    def for_each[A, F <: (A => Any)](v: Seq[A], first: Int, last: Int)(f: F): F = ForEach(v, first, last, f)
 
     def generate[A](v : Seq[A], first: Int, last: Int)(gen: Unit => A): Unit = Generate(v, first, last, gen)
     def generate_n[A](^ : Seq[A], first: Int, n: Int)(gen: Unit => A): Unit = GenerateN(^, first, n, gen)

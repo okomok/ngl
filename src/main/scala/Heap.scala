@@ -36,7 +36,7 @@ package gine
 
 // PushHeap
 
-object PushHeap {
+private object PushHeap {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         __apply(*, __first, (__last - __first) - 1, 0, *(__last - 1), __comp)
     }
@@ -57,7 +57,7 @@ object PushHeap {
 
 // PopHeap
 
-object PopHeap {
+private object PopHeap {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         __apply(*, __first, __last - 1, __last - 1, *(__last - 1), __comp)
     }
@@ -71,7 +71,7 @@ object PopHeap {
 
 // MakeHeap
 
-object MakeHeap {
+private object MakeHeap {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         if (__last - __first < 2) {
             return
@@ -92,7 +92,7 @@ object MakeHeap {
 
 // SortHeap
 
-object SortHeap {
+private object SortHeap {
     def apply[A](* : Seq[A], __first: Int, last: Int, __comp: Ordering[A]) {
         var __last = last
 
@@ -106,7 +106,7 @@ object SortHeap {
 
 // AdjustHeap
 
-object AdjustHeap {
+private object AdjustHeap {
     def apply[A](* : Seq[A], __first: Int, holeIndex: Int, __len: Int, __value: A, __comp: Ordering[A]) {
         var __holeIndex = holeIndex
 

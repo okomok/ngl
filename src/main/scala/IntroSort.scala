@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object IntroSort {
+private object IntroSort {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         if (__first != __last) {
             loop(*, __first, __last, depthLimit(__first, __last), __comp)

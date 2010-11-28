@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object AdjacentFind {
+private object AdjacentFind {
     def apply[A](* : Seq[A], first: Int, __last: Int, __binary_pred: (A, A) => Boolean = EqualTo): Int = {
         var __first = first
 

@@ -34,13 +34,13 @@ package com.github.okomok
 package gine
 
 
-object ReplaceCopy {
+private object ReplaceCopy {
     def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], result: Int, __old_value: Any, __new_value: A): Int = {
         ReplaceCopyIf(v, __first, __last, ^, result, (_: A) == __old_value, __new_value)
     }
 }
 
-object ReplaceCopyIf {
+private object ReplaceCopyIf {
     def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], result: Int, __pred: A => Boolean, __new_value: A): Int = {
         var __result = result
         ForEach(v, __first, __last, { (value: A) =>  ^(__result) = if (__pred(value)) __new_value else value; __result += 1 })

@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Generate {
+private object Generate {
     def apply[A](v : Seq[A], first: Int, __last: Int, __gen: Unit => A) {
         var __first = first
 
@@ -45,7 +45,7 @@ object Generate {
     }
 }
 
-object GenerateN {
+private object GenerateN {
     def apply[A](^ : Seq[A], first: Int, n: Int, __gen: Unit => A) {
         var __first = first
         var __n = n

@@ -34,13 +34,13 @@ package com.github.okomok
 package gine
 
 
-object Remove {
+private object Remove {
     def apply[A](v: Seq[A], first: Int, __last: Int, e: Any): Int = {
         RemoveIf(v, first, __last, (_: A) == e)
     }
 }
 
-object RemoveIf {
+private object RemoveIf {
     def apply[A](v: Seq[A], first: Int, __last: Int, __pred: A => Boolean): Int = {
         var __first = first
 

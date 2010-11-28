@@ -34,13 +34,13 @@ package com.github.okomok
 package gine
 
 
-object Replace {
+private object Replace {
     def apply[A](* : Seq[A], first: Int, __last: Int, __old_value: Any, __new_value: A) {
         ReplaceIf(*, first, __last, (_: A) == __old_value, __new_value)
     }
 }
 
-object ReplaceIf {
+private object ReplaceIf {
     def apply[A](* : Seq[A], first: Int, __last: Int, __pred: A => Boolean, __new_value: A) {
         var __first = first
 

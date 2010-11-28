@@ -34,13 +34,13 @@ package com.github.okomok
 package gine
 
 
-object Find {
+private object Find {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __val: Any): Int = {
         FindIf(*, __first, __last, (_: A) == __val)
     }
 }
 
-object FindIf {
+private object FindIf {
     def apply[A](* : Seq[A], first: Int, __last: Int, __pred: A => Boolean): Int = {
         var __first = first
         while (__first != __last && !__pred(*(__first))) {

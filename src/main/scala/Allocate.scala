@@ -11,7 +11,7 @@ package gine
 import scala.collection.mutable.ArraySeq
 
 
-object Allocate {
+private object Allocate {
     def apply[A](len: Int) = new Seq[A] {
         val a = new ArraySeq[A](len)
         override def begin = 0

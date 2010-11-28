@@ -8,7 +8,7 @@ package com.github.okomok
 package gine
 
 
-object OutputBy {
+private object OutputBy {
     def apply[A](f: A => Unit): Seq[A] = new OutputBy(f)
 }
 

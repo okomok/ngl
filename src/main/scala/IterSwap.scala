@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object IterSwap {
+private object IterSwap {
     def apply[A](v1: Seq[A], __i1: Int, v2: Seq[A], __i2: Int) {
         val tmp = v1(__i1)
         v1(__i1) = v2(__i2)

@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object PartialSort {
+private object PartialSort {
     def apply[A](* : Seq[A], __first: Int, __middle: Int, __last: Int, __comp: Ordering[A]) {
         MakeHeap(*, __first, __middle, __comp)
         var __i = __middle

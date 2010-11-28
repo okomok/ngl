@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object CopyBackward {
+private object CopyBackward {
     def apply[A, B >: A](v : Seq[A], __first: Int, last: Int, ^ : Seq[B], result: Int): Int = {
         var __last = last
         var __result = result

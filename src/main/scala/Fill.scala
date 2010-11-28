@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Fill {
+private object Fill {
     def apply[A](* : Seq[A], first: Int, __last: Int, __val: A) {
         var __first = first
 

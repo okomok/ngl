@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object MinElement {
+private object MinElement {
     def apply[A](* : Seq[A], first: Int, __last: Int, __comp: Ordering[A]): Int = {
         var __first = first
 
@@ -53,7 +53,7 @@ object MinElement {
     }
 }
 
-object MaxElement {
+private object MaxElement {
     def apply[A](* : Seq[A], first: Int, __last: Int, __comp: Ordering[A]): Int = {
         MinElement(*, first, __last, __comp.reverse)
     }

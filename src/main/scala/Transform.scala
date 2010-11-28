@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object Transform {
+private object Transform {
     def apply[A, B](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __opr: A => B): Int = {
         var __first = first
         var __result = result

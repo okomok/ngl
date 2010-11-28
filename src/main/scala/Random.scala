@@ -41,7 +41,7 @@ class DefaultRandomNumberGenerator extends (Int => Int) {
 }
 
 
-object RandomShuffle {
+private object RandomShuffle {
     def apply[A](v: Seq[A], __first: Int, __last: Int, __rand: Int => Int = new DefaultRandomNumberGenerator) {
         if (__first == __last) {
             return
@@ -55,7 +55,7 @@ object RandomShuffle {
 }
 
 
-object RandomSample {
+private object RandomSample {
     def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], __out_first: Int, __out_last: Int, __rand: Int => Int = new DefaultRandomNumberGenerator): Int = {
         __apply(v, first, __last, ^, __out_first, __rand, __out_last - __out_first)
     }
@@ -83,7 +83,7 @@ object RandomSample {
     }
 }
 
-object RandomSampleN {
+private object RandomSampleN {
     def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], out_ite: Int, __n: Int): Int = {
         apply(v, first, __last, ^, out_ite, __n, new DefaultRandomNumberGenerator)
     }

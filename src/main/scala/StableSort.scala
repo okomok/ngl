@@ -34,7 +34,7 @@ package com.github.okomok
 package gine
 
 
-object StableSort {
+private object StableSort {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         val __len = (__last - __first + 1) / 2
         val __middle = __first + __len

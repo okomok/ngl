@@ -15,13 +15,13 @@ package gine
 // v.copy(0, v.size, Output(aStream.put(_)), 0)
 
 
-object Copy {
+private object Copy {
     def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], result: Int): Int = {
         CopyIf(v, __first, __last, ^, result, { (e: A) => true })
     }
 }
 
-object CopyIf {
+private object CopyIf {
     def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], result: Int, __pred: A => Boolean): Int = {
         var __result = result
         ForEach(v, __first, __last, { (e: A) => if (__pred(e)) { ^(__result) = e; __result += 1 } })
