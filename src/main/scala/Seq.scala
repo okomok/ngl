@@ -11,20 +11,42 @@ package gine
 import scala.annotation.unchecked.uncheckedVariance
 
 
-object Seq
+trait Seq[+A] extends PartialFunction[Int, A] { self =>
 
-
-trait Seq[+A] extends { self =>
-
+    /**
+     * @return  begin index, which is NOT guaranteed to be <code>0</code>.
+     */
     def begin: Int
+
+    /**
+     * @return  end index, which is NOT guaranteed to be <code>size</code>.
+     */
     def end: Int
 
-    def read(i: Int): A
-    def write(i: Int, x: A @uncheckedVariance): Unit
+    /**
+     * @param   i   index of element to return.
+     * @return  the element at the specified index.
+     * @throws  NotReadableException if not overridden.
+     */
+    @Annotation.pre("readable")
+    @Annotation.pre("`isDefinedAt(i)`")
+    override def apply(i: Int): A = throw NotReadableException(this)
 
-    object deref {
-        def apply(i: Int): A = self.read(i)
-        def update(i: Int, x: A @uncheckedVariance): Unit = self.write(i, x)
-    }
+    /**
+     * Replaces the element at the specified index with
+     * the specified element.
+     *
+     * @param   i   index of element to replace.
+     * @param   e   element to be stored at the specified position.
+     * @throws  NotWritableException if not overridden.
+     */
+    @Annotation.pre("writable")
+    @Annotation.pre("`isDefinedAt(i)`")
+    def update(i: Int, e: A @uncheckedVariance): Unit = throw NotWritableException(this)
+
+    /**
+     * @return  <code>(begin <= i) && (i < end)</code>, possibly overridden in subclasses.
+     */
+    override def isDefinedAt(i: Int): Boolean = (begin <= i) && (i < end)
 
 }
