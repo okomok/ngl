@@ -35,7 +35,7 @@ package gine
 
 
 private object ForEach {
-    def apply[A, F <: (A => Any)](* : Seq[A], first: Int, __last: Int, __f: F): F = {
+    def apply[A, F <: Function1[A, Any]](* : Seq[A], first: Int, __last: Int, __f: F): F = {
         var __first = first
         while (__first != __last) {
             __f(*(__first))

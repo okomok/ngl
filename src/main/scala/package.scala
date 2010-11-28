@@ -14,6 +14,21 @@ package object gine {
      */
     final val SINGULAR = 0x80000000
 
+    def toArray[A : ClassManifest](v: Seq[A]): Array[A] = {
+        val a = new Array[A](v.end - v.begin)
+        val ^ = Seq.from(a)
+        copy(v, v.begin, v.end)(^, ^.begin)
+        a
+    }
+
+    def toJList[A](v: Seq[A]): java.util.List[A] = {
+        val a = new java.util.ArrayList[A](v.end - v.begin)
+        for_each(v, v.begin, v.end) { x =>
+            a.add(x)
+        }
+        a
+    }
+
     def accumulate[A, B](v: Seq[A], first: Int, last: Int)(init: B)(binary_op: (B, A) => B): B = Accumulate(v, first, last, init, binary_op)
 
     def adjacent_find[A](v: Seq[A], first: Int, last: Int): Int = AdjacentFind(v, first, last)
@@ -43,7 +58,7 @@ package object gine {
     def find[A](v: Seq[A], first: Int, last: Int)(value: Any): Int = Find(v, first, last, value)
     def find_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = FindIf(v, first, last, pred)
 
-    def for_each[A, F <: (A => Any)](v: Seq[A], first: Int, last: Int)(f: F): F = ForEach(v, first, last, f)
+    def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Unit): Unit = ForEach(v, first, last, f)
 
     def generate[A](v : Seq[A], first: Int, last: Int)(gen: Unit => A): Unit = Generate(v, first, last, gen)
     def generate_n[A](^ : Seq[A], first: Int, n: Int)(gen: Unit => A): Unit = GenerateN(^, first, n, gen)

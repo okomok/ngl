@@ -11,6 +11,19 @@ package gine
 import scala.annotation.unchecked.uncheckedVariance
 
 
+object Seq {
+
+    @Annotation.returnThat
+    def from[A](that: Seq[A]): Seq[A] = that
+
+    implicit def fromArray[A](from: Array[A]): Seq[A] = new FromArray(from)
+    implicit def fromSSeq[A](from: scala.collection.Seq[A]): Seq[A] = new FromSSeq(from)
+    implicit def fromSMSeq[A](from: scala.collection.mutable.IndexedSeq[A]): Seq[A] = new FromSMSeq(from)
+    implicit def fromJList[A](from: java.util.List[A]): Seq[A] = new FromJList(from)
+
+}
+
+
 trait Seq[+A] extends PartialFunction[Int, A] { self =>
 
     /**
