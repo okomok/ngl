@@ -81,7 +81,7 @@ package object gine {
     def replace[A](v: Seq[A], first: Int, last: Int)(old_value: Any, new_value: A): Unit = Replace(v, first, last, old_value, new_value)
     def replace_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean, new_value: A): Unit = ReplaceIf(v, first, last, pred, new_value)
 
-    def replace_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int, old_value: Any, new_value: A): Int = ReplaceCopy(v, first, last, ^, result, old_value, new_value)
+    def replace_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(old_value: Any, new_value: A): Int = ReplaceCopy(v, first, last, ^, result, old_value, new_value)
     def replace_copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(pred: A => Boolean, new_value: A): Int = ReplaceCopyIf(v, first, last, ^, result, pred, new_value)
 
     def reverse[A](v: Seq[A], first: Int, last: Int): Unit = Reverse(v, first, last)
