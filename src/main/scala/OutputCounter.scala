@@ -22,7 +22,7 @@ final class OutputCounter(val from: Int) extends Seq[Any] with Output[Any] {
     /**
      * Increments counter.
      */
-    override protected def output(e: Any) = c += 1
+    override protected def output(x: Any) = c += 1
 
     /**
      * Returns the result of counting.

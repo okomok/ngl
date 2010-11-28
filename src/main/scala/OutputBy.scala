@@ -8,7 +8,6 @@ package com.github.okomok
 package gine
 
 
-private
-class OutputBy[A](f: A => Unit) extends Seq[A] with Output[A] {
+private class OutputBy[A](f: A => Unit) extends Seq[A] with Output[A] {
     override protected def output(x: A) = f(x)
 }

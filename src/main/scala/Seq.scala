@@ -42,7 +42,7 @@ trait Seq[+A] extends PartialFunction[Int, A] { self =>
      */
     @Annotation.pre("writable")
     @Annotation.pre("`isDefinedAt(i)`")
-    def update(i: Int, e: A @uncheckedVariance): Unit = throw new NotWritableException(this)
+    def update(i: Int, x: A @uncheckedVariance): Unit = throw new NotWritableException(this)
 
     /**
      * @return  <code>(begin <= i) && (i < end)</code>, possibly overridden in subclasses.
