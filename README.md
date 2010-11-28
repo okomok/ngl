@@ -22,7 +22,7 @@ _Range_ is a triple represented by `(gine.Seq[A], Int, Int)`.
 _OutputRange_ is a pair represented by `(gine.Seq[A], Int)`.
 
 
-These concepts doesn't appear as Scala types; for maximum efficiency.
+These concepts don't appear as Scala types; for maximum efficiency.
 
 
 ## Seq Synopsis
