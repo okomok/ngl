@@ -47,7 +47,7 @@ This indirection is significant for STL algorithms.
 
 For example, STL contains the `copy` function:
 
-    template<class Iterator, class Iterator>
+    template<class Iterator, class OutputIterator>
     Iterator copy(Iterator first, Iterator last, OutputIterator result);
 
 In `gine` it is declared as:
