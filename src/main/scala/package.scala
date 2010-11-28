@@ -102,7 +102,8 @@ package object gine {
     def unique_copy_if[A, B >: A](v : Seq[A], first: Int, last: Int)(^ : Seq[B], result: Int)(binary_pred: (A, B) => Boolean): Int = UniqueCopy(v, first, last, ^, result, binary_pred)
 
     /**
-     * Creates <code>OutputSeq</code> in which <code>output(e)</code> calls <code>f(e)</code>.
+     * Creates <code>Seq</code> in which <code>update</code> calls <code>f</code>.
      */
-    def output_by[A](f: A => Unit): Seq[A] = OutputBy(f)
+    def output_by[A](f: A => Unit): Seq[A] = new OutputBy(f)
+
 }

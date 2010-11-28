@@ -9,9 +9,9 @@ package gine
 
 
 /**
- * Counts calls of <code>vector.update</code>.
+ * Counts calls of <code>Seq.update</code>.
  */
-class OutputCounter(val from: Int) extends OutputSeq[Any] {
+final class OutputCounter(val from: Int) extends Seq[Any] with Output[Any] {
     /**
      * Starts from count <code>0</code>.
      */
@@ -22,7 +22,7 @@ class OutputCounter(val from: Int) extends OutputSeq[Any] {
     /**
      * Increments counter.
      */
-    override def output(e: Any) = c += 1
+    override protected def output(e: Any) = c += 1
 
     /**
      * Returns the result of counting.
