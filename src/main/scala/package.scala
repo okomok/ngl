@@ -63,8 +63,8 @@ package object ngl {
     def generate[A](v : Seq[A], first: Int, last: Int)(gen: Unit => A): Unit = Generate(v, first, last, gen)
     def generate_n[A](^ : Seq[A], first: Int, n: Int)(gen: Unit => A): Unit = GenerateN(^, first, n, gen)
 
-    def lexicographical_compare[A](v1: Seq[A], first1: Int, __last1: Int)(v2: Seq[A], first2: Int, __last2: Int)(implicit c: Ordering[A]): Boolean = LexicographicalCompare(v1, first1, __last1, v2, first2, __last2, c)
-    def lexicographical_compare_3way[A](v1: Seq[A], first1: Int, __last1: Int)(v2: Seq[A], first2: Int, __last2: Int)(implicit c: Ordering[A]): Int = LexicographicalCompare3way(v1, first1, __last1, v2, first2, __last2, c)
+    def lexicographical_compare[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(implicit c: Ordering[A]): Boolean = LexicographicalCompare(v1, first1, last1, v2, first2, last2, c)
+    def lexicographical_compare_3way[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(implicit c: Ordering[A]): Int = LexicographicalCompare3way(v1, first1, last1, v2, first2, last2, c)
 
     def merge[A](v1 : Seq[A], first1: Int, last1: Int)(v2 : Seq[A], first2: Int, last2: Int)(^ : Seq[A], result: Int)(implicit c: Ordering[A]): Int = Merge(v1, first1, last1, v2, first2, last2, ^, result, c)
 
