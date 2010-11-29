@@ -36,7 +36,7 @@ These concepts don't appear as Scala types; for maximum efficiency.
         def update(i: Int, x: A): Unit
     }
 
-Note that `Seq` doesn't guarantee indices in `[0, Seq-size)`.
+Note that `Seq` doesn't guarantee indices in `[0, length-of-Seq)`.
 First you must call `begin` and `end` to build a valid Range.
 This indirection is significant for STL algorithms.
 

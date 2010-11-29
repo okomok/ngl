@@ -21,6 +21,8 @@ object Seq {
     implicit def fromSMSeq[A](from: scala.collection.mutable.IndexedSeq[A]): Seq[A] = new FromSMSeq(from)
     implicit def fromJList[A](from: java.util.List[A]): Seq[A] = new FromJList(from)
 
+    def apply[A](xs: A*): Seq[A] = from(xs)
+
 }
 
 
