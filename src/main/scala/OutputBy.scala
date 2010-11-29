@@ -5,7 +5,7 @@
 
 
 package com.github.okomok
-package gine
+package ngl
 
 
 private class OutputBy[A](f: A => Unit) extends Seq[A] with Output[A] {

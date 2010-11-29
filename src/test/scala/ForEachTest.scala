@@ -5,27 +5,27 @@
 
 
 package com.github.okomok
-package ginetest
+package ngltest
 
 
-import com.github.okomok.gine
+import com.github.okomok.ngl
 
 
 class ForEachTest extends org.scalatest.junit.JUnit3Suite {
 
     def testTrivial {
-        val xs: gine.Seq[Int] = gine.Seq.from(Array(1,2,3,4,5))
+        val xs: ngl.Seq[Int] = ngl.Seq.from(Array(1,2,3,4,5))
         val out = new java.util.ArrayList[Int]
-        gine.for_each(xs, xs.begin, xs.end) { (x: Int) =>
+        ngl.for_each(xs, xs.begin, xs.end) { (x: Int) =>
             out.add(x)
         }
-        expect(gine.toJList(xs))(out)
+        expect(ngl.toJList(xs))(out)
     }
 
     def testEmpty {
-        val xs: gine.Seq[Int] = gine.Seq.from(Array[Int]())
+        val xs: ngl.Seq[Int] = ngl.Seq.from(Array[Int]())
         val out = new java.util.ArrayList[Int]
-        gine.for_each(xs, xs.begin, xs.end) { (x: Int) =>
+        ngl.for_each(xs, xs.begin, xs.end) { (x: Int) =>
             out.add(x)
         }
         assert(out.isEmpty)

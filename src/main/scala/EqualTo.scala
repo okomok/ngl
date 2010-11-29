@@ -5,7 +5,7 @@
 
 
 package com.github.okomok
-package gine
+package ngl
 
 
 private object EqualTo extends Function2[Any, Any, Boolean] {

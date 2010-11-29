@@ -5,7 +5,7 @@
 
 
 package com.github.okomok
-package gine
+package ngl
 
 
 private class FromJList[A](_1: java.util.List[A]) extends Seq[A] {

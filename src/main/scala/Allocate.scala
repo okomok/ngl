@@ -5,7 +5,7 @@
 
 
 package com.github.okomok
-package gine
+package ngl
 
 
 import scala.collection.mutable.ArraySeq

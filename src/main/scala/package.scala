@@ -7,7 +7,7 @@
 package com.github.okomok
 
 
-package object gine {
+package object ngl {
 
     /**
      * @return  <code>java.lang.Math.MIN_INT</code>, which is the reserved index.
@@ -42,7 +42,7 @@ package object gine {
 
     def copy_backward[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int): Int = CopyBackward(v, first, last, ^, result)
 
-    def count[A](v: Seq[A], first: Int, last: Int)(e: Any): Int = Count(v, first, last, e)
+    def count[A](v: Seq[A], first: Int, last: Int)(x: Any): Int = Count(v, first, last, x)
     def count_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = CountIf(v, first, last, pred)
 
     def min_element[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Int = MinElement(v, first, last, c)
@@ -58,7 +58,7 @@ package object gine {
     def find[A](v: Seq[A], first: Int, last: Int)(value: Any): Int = Find(v, first, last, value)
     def find_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = FindIf(v, first, last, pred)
 
-    def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Unit): Unit = ForEach(v, first, last, f)
+    def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Any): Unit = ForEach(v, first, last, f)
 
     def generate[A](v : Seq[A], first: Int, last: Int)(gen: Unit => A): Unit = Generate(v, first, last, gen)
     def generate_n[A](^ : Seq[A], first: Int, n: Int)(gen: Unit => A): Unit = GenerateN(^, first, n, gen)
@@ -87,10 +87,10 @@ package object gine {
     def random_sample_n[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], out_ite: Int, n: Int): Int = RandomSampleN(v, first, last, ^, out_ite, n)
     def random_sample_n_by[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], out_ite: Int, n: Int)(rand: Int => Int): Int = RandomSampleN(v, first, last, ^, out_ite, n, rand)
 
-    def remove[A](v: Seq[A], first: Int, last: Int)(e: Any): Int = Remove(v, first, last, e)
+    def remove[A](v: Seq[A], first: Int, last: Int)(x: Any): Int = Remove(v, first, last, x)
     def remove_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = RemoveIf(v, first, last, pred)
 
-    def remove_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(e: Any): Int = RemoveCopy(v, first, last, ^, result, e)
+    def remove_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(x: Any): Int = RemoveCopy(v, first, last, ^, result, x)
     def remove_copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(pred: A => Boolean): Int = RemoveCopyIf(v, first, last, ^, result, pred)
 
     def replace[A](v: Seq[A], first: Int, last: Int)(old_value: Any, new_value: A): Unit = Replace(v, first, last, old_value, new_value)

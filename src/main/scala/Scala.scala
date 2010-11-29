@@ -5,7 +5,7 @@
 
 
 package com.github.okomok
-package gine
+package ngl
 
 
 private class FromArray[A](_1: Array[A]) extends Seq[A] {
