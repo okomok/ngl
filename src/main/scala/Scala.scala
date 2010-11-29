@@ -15,6 +15,12 @@ private class FromArray[A](_1: Array[A]) extends Seq[A] {
     override def update(i: Int, x: A) = _1(i) = x
 }
 
+private class FromString(_1: String) extends Seq[Char] {
+    override def begin = 0
+    override def end = _1.length
+    override def apply(i: Int) = _1.charAt(i)
+}
+
 private class FromSSeq[A](_1: scala.collection.Seq[A]) extends Seq[A] {
     override def begin = 0
     override def end = _1.length
