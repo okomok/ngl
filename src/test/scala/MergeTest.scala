@@ -37,15 +37,28 @@ package ngltest
 import com.github.okomok.ngl
 
 
-class AdjacentFindTest extends org.scalatest.junit.JUnit3Suite {
+class MergeTest extends org.scalatest.junit.JUnit3Suite {
 
     def test0 {
-        val xs = ngl.Seq(1,2,4,8,16)
-        val ys = ngl.Seq(5,3,2,1,1)
-        val i = ngl.adjacent_find(xs, xs.begin, xs.end)
-        expect(xs.end)(i)
-        val j = ngl.adjacent_find(ys, ys.begin, ys.end)
-        expect(xs.begin + 3)(j)
+        val numbers1 = Array(1, 6, 13, 25, 101)
+        val numbers2 = Array(-5, 26, 36, 46, 99)
+        val _numbers1 = ngl.Seq.from(numbers1)
+        val _numbers2 = ngl.Seq.from(numbers2)
+        val result = new Array[Int](10)
+        val _result = ngl.Seq.from(result)
+
+        ngl.merge(_numbers1, _numbers1.begin, _numbers1.end)(_numbers2, _numbers2.begin, _numbers2.end)(_result, _result.begin)
+
+        expect(-5)(result(0))
+        expect(1)(result(1))
+        expect(6)(result(2))
+        expect(13)(result(3))
+        expect(25)(result(4))
+        expect(26)(result(5))
+        expect(36)(result(6))
+        expect(46)(result(7))
+        expect(99)(result(8))
+        expect(101)(result(9))
     }
 
 }
