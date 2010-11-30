@@ -31,35 +31,27 @@
 
 
 package com.github.okomok
-package ngltest
+package ngl
 
 
-import com.github.okomok.ngl
+private object PartialSum {
+    def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_op: (A, A) => A): Int = {
+        var __first = first; var __result = result
 
+        if (__first == __last) {
+            return __result
+        }
+        ^(__result) = v(__first)
 
-class ReverseTest extends org.scalatest.junit.JUnit3Suite {
-
-    def testReverse1 {
-        val numbers = Array(0, 1, 2, 3, 4, 5)
-        ngl.reverse(numbers, 0, 6)
-        expect(5)(numbers(0))
-        expect(4)(numbers(1))
-        expect(3)(numbers(2))
-        expect(2)(numbers(3))
-        expect(1)(numbers(4))
-        expect(0)(numbers(5))
+        var __val = v(__first)
+        __first += 1
+        while (__first != __last) {
+            __val = __binary_op(__val, v(__first))
+            __result += 1
+            ^(__result) = __val;
+            __first += 1
+        }
+        __result += 1
+        __result
     }
-
-    def testReverseCopy1 {
-        val numbers = Array(0, 1, 2, 3, 4, 5)
-        val result = new Array[Int](6)
-        ngl.reverse_copy(numbers, 0, 6)(result, 0)
-        expect(5)(result(0))
-        expect(4)(result(1))
-        expect(3)(result(2))
-        expect(2)(result(3))
-        expect(1)(result(4))
-        expect(0)(result(5))
-    }
-
 }

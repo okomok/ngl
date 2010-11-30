@@ -71,6 +71,8 @@ package object ngl {
 
     def partial_sort[A](v: Seq[A], first: Int, middle: Int, last: Int)(implicit c: Ordering[A]): Unit = PartialSort(v, first, middle, last, c)
 
+    def partial_sum[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(binary_op: (A, A) => A): Int = PartialSum(v, first, last, ^, result, binary_op)
+
     def push_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PushHeap(v, first, last, c)
     def pop_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PopHeap(v, first, last, c)
     def make_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = MakeHeap(v, first, last, c)
@@ -101,6 +103,7 @@ package object ngl {
     def replace_copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(new_value: A)(pred: A => Boolean): Int = ReplaceCopyIf(v, first, last, ^, result, pred, new_value)
 
     def reverse[A](v: Seq[A], first: Int, last: Int): Unit = Reverse(v, first, last)
+    def reverse_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int): Int = ReverseCopy(v, first, last, ^, result)
 
     def sort[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = Sort(v, first, last, c)
     def stable_sort[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = StableSort(v, first, last, c)

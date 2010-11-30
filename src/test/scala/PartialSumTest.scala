@@ -37,29 +37,20 @@ package ngltest
 import com.github.okomok.ngl
 
 
-class ReverseTest extends org.scalatest.junit.JUnit3Suite {
+class PartialSumTest extends org.scalatest.junit.JUnit3Suite {
 
-    def testReverse1 {
-        val numbers = Array(0, 1, 2, 3, 4, 5)
-        ngl.reverse(numbers, 0, 6)
-        expect(5)(numbers(0))
-        expect(4)(numbers(1))
-        expect(3)(numbers(2))
-        expect(2)(numbers(3))
-        expect(1)(numbers(4))
-        expect(0)(numbers(5))
-    }
-
-    def testReverseCopy1 {
-        val numbers = Array(0, 1, 2, 3, 4, 5)
+    def testPartialSum0 {
+        val numbers = Array(1, 2, 3, 4, 5, 6)
         val result = new Array[Int](6)
-        ngl.reverse_copy(numbers, 0, 6)(result, 0)
-        expect(5)(result(0))
-        expect(4)(result(1))
-        expect(3)(result(2))
-        expect(2)(result(3))
-        expect(1)(result(4))
-        expect(0)(result(5))
+
+        ngl.partial_sum(numbers, 0, 6)(result, 0) { _ + _ }
+
+        expect(1)(result(0))
+        expect(3)(result(1))
+        expect(6)(result(2))
+        expect(10)(result(3))
+        expect(15)(result(4))
+        expect(21)(result(5))
     }
 
 }

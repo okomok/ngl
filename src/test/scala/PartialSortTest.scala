@@ -37,29 +37,36 @@ package ngltest
 import com.github.okomok.ngl
 
 
-class ReverseTest extends org.scalatest.junit.JUnit3Suite {
+class PartialSortTest extends org.scalatest.junit.JUnit3Suite {
 
-    def testReverse1 {
-        val numbers = Array(0, 1, 2, 3, 4, 5)
-        ngl.reverse(numbers, 0, 6)
-        expect(5)(numbers(0))
-        expect(4)(numbers(1))
+    def testPartialSort0 {
+        val numbers = Array(5, 2, 4, 3, 1, 6)
+
+        ngl.partial_sort(numbers, 0, 3, 6)
+
+        expect(1)(numbers(0))
+        expect(2)(numbers(1))
         expect(3)(numbers(2))
-        expect(2)(numbers(3))
-        expect(1)(numbers(4))
-        expect(0)(numbers(5))
+        expect(5)(numbers(3))
+        expect(4)(numbers(4))
+        expect(6)(numbers(5))
     }
 
-    def testReverseCopy1 {
-        val numbers = Array(0, 1, 2, 3, 4, 5)
-        val result = new Array[Int](6)
-        ngl.reverse_copy(numbers, 0, 6)(result, 0)
-        expect(5)(result(0))
-        expect(4)(result(1))
-        expect(3)(result(2))
-        expect(2)(result(3))
-        expect(1)(result(4))
-        expect(0)(result(5))
+    def testPartialSort1 {
+        val numbers = Array(8, 8, 5, 3, 7, 6, 5, 3, 2, 4)
+
+        ngl.partial_sort(numbers, 0, 5, 10)
+
+        expect(2)(numbers(0))
+        expect(3)(numbers(1))
+        expect(3)(numbers(2))
+        expect(4)(numbers(3))
+        expect(5)(numbers(4))
+        expect(8)(numbers(5))
+        expect(8)(numbers(6))
+        expect(7)(numbers(7))
+        expect(6)(numbers(8))
+        expect(5)(numbers(9))
     }
 
 }
