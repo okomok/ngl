@@ -35,23 +35,23 @@ package ngl
 
 
 private object Generate {
-    def apply[A](v : Seq[A], first: Int, __last: Int, __gen: Unit => A) {
+    def apply[A](* : Seq[A], first: Int, __last: Int, __gen: Function0[A]) {
         var __first = first
 
         while (__first != __last) {
-            v(__first) = __gen()
+            *(__first) = __gen()
             __first += 1
         }
     }
 }
 
 private object GenerateN {
-    def apply[A](^ : Seq[A], first: Int, n: Int, __gen: Unit => A) {
+    def apply[A](* : Seq[A], first: Int, n: Int, __gen: Function0[A]) {
         var __first = first
         var __n = n
 
         while ( __n > 0) {
-            ^(__first) = __gen()
+            *(__first) = __gen()
             __n -= 1; __first += 1
         }
     }

@@ -43,6 +43,7 @@ class HeapTest extends org.scalatest.junit.JUnit3Suite {
         val xs = ngl.Seq.from(Array(5, 10, 4, 13, 11, 19))
 
         ngl.make_heap(xs, xs.begin, xs.begin + 6)
+        assert(ngl.is_heap(xs, xs.begin, xs.end))
         expect(19)(xs(xs.begin))
 
         ngl.pop_heap(xs, xs.begin, xs.begin + 6)
@@ -67,6 +68,7 @@ class HeapTest extends org.scalatest.junit.JUnit3Suite {
         val xs = ngl.Seq.from(Array(5, 10, 4, 13, 11, 19))
 
         ngl.make_heap(xs, xs.begin, xs.begin + 6)(Ordering.fromLessThan[Int](_ > _))
+        assert(ngl.is_heap(xs, xs.begin, xs.end)(Ordering.fromLessThan[Int](_ > _)))
         expect(4)(xs(xs.begin))
 
         ngl.pop_heap(xs, xs.begin, xs.begin + 6)(Ordering.fromLessThan[Int](_ > _))
@@ -93,6 +95,7 @@ class HeapTest extends org.scalatest.junit.JUnit3Suite {
         var xs = ngl.Seq.from(a)
 
         ngl.make_heap(xs, xs.begin, xs.end)
+        assert(ngl.is_heap(xs, xs.begin, xs.end))
 
         a.add(7)
         xs = ngl.Seq.from(a)
@@ -114,6 +117,7 @@ class HeapTest extends org.scalatest.junit.JUnit3Suite {
         var xs = ngl.Seq.from(a)
 
         ngl.make_heap(xs, xs.begin, xs.end)(Ordering.fromLessThan[Int](_ > _))
+        assert(ngl.is_heap(xs, xs.begin, xs.end)(Ordering.fromLessThan[Int](_ > _)))
 
         a.add(7)
         xs = ngl.Seq.from(a)

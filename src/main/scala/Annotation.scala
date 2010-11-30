@@ -122,4 +122,10 @@ private object Annotation {
     class exponentialTime extends TimeComplexity
     class factorialTime extends TimeComplexity
 
+
+    /**
+     * Guarantees indices is in [0, length-of-Seq).
+     */
+    class hasNthIndex extends StaticAnnotation
+
 }

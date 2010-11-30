@@ -16,12 +16,18 @@ object Seq {
     @Annotation.returnThat
     def from[A](that: Seq[A]): Seq[A] = that
 
+    @Annotation.hasNthIndex
     implicit def fromArray[A](from: Array[A]): Seq[A] = new FromArray(from)
+    @Annotation.hasNthIndex
     implicit def fromString(from: String): Seq[Char] = new FromString(from)
+    @Annotation.hasNthIndex
     implicit def fromSSeq[A](from: scala.collection.Seq[A]): Seq[A] = new FromSSeq(from)
+    @Annotation.hasNthIndex
     implicit def fromSMSeq[A](from: scala.collection.mutable.IndexedSeq[A]): Seq[A] = new FromSMSeq(from)
+    @Annotation.hasNthIndex
     implicit def fromJList[A](from: java.util.List[A]): Seq[A] = new FromJList(from)
 
+    @Annotation.hasNthIndex
     def apply[A](xs: A*): Seq[A] = from(xs)
 
 }

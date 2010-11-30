@@ -1,6 +1,6 @@
 
 
-// Replaceright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -31,31 +31,30 @@
 
 
 package com.github.okomok
-package ngl
+package ngltest
 
 
-private object Fill {
-    def apply[A](* : Seq[A], first: Int, __last: Int, __val: A) {
-        var __first = first
-        var __n = __last - __first
+import com.github.okomok.ngl
 
-        while (__n > 0) {
-            *(__first) = __val
-            __first += 1
-            __n -= 1
+
+class FillTest extends org.scalatest.junit.JUnit3Suite {
+
+    def testFill1 {
+        val v = new Array[Int](10)
+        ngl.fill(v, 0, 10)(42)
+
+        for (x <- v) {
+            expect(42)(x)
         }
     }
-}
 
-private object FillN {
-    def apply[A](* : Seq[A], first: Int, n: Int, __val: A): Int = {
-        var __first = first
-        var __n = n
+    def testFillN1 {
+        val v = new Array[Int](10)
+        ngl.fill_n(v, 0)(10)(42)
 
-        while (__n > 0) {
-            *(__first) = __val
-            __n -= 1; __first += 1
+        for (x <- v) {
+            expect(42)(x)
         }
-        __first
     }
+
 }

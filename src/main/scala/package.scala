@@ -54,14 +54,15 @@ package object ngl {
     def equal_if[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int)(binary_pred: (A1, A2) => Boolean): Boolean = Equal(v1, first1, last1, v2, first2, binary_pred)
 
     def fill[A](v: Seq[A], first: Int, last: Int)(value: A): Unit = Fill(v, first, last, value)
+    def fill_n[A](v: Seq[A], first: Int)(n: Int)(value: A): Int = FillN(v, first, n, value)
 
     def find[A](v: Seq[A], first: Int, last: Int)(value: Any): Int = Find(v, first, last, value)
     def find_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = FindIf(v, first, last, pred)
 
     def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Any): Unit = ForEach(v, first, last, f)
 
-    def generate[A](v : Seq[A], first: Int, last: Int)(gen: Unit => A): Unit = Generate(v, first, last, gen)
-    def generate_n[A](^ : Seq[A], first: Int, n: Int)(gen: Unit => A): Unit = GenerateN(^, first, n, gen)
+    def generate[A](v: Seq[A], first: Int, last: Int)(gen: Function0[A]): Unit = Generate(v, first, last, gen)
+    def generate_n[A](v: Seq[A], first: Int)(n: Int)(gen: Function0[A]): Unit = GenerateN(v, first, n, gen)
 
     def lexicographical_compare[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(implicit c: Ordering[A]): Boolean = LexicographicalCompare(v1, first1, last1, v2, first2, last2, c)
     def lexicographical_compare_3way[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(implicit c: Ordering[A]): Int = LexicographicalCompare3way(v1, first1, last1, v2, first2, last2, c)
@@ -74,7 +75,7 @@ package object ngl {
     def pop_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PopHeap(v, first, last, c)
     def make_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = MakeHeap(v, first, last, c)
     def sort_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = SortHeap(v, first, last, c)
-    def is_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = IsHeap(v, first, last, c)
+    def is_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Boolean = IsHeap(v, first, last, c)
 
     def iter_swap[A](v1: Seq[A], i1: Int)(v2: Seq[A], i2: Int): Unit = IterSwap(v1, i1, v2, i2)
 
