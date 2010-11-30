@@ -67,6 +67,9 @@ package object ngl {
     def find(v: Seq[_], first: Int, last: Int)(value: Any): Int = Find(v, first, last, value)
     def find_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean): Int = FindIf(v, first, last, pred)
 
+    def find_first_of(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int, last2: Int): Int = FindFirstOf(v1, first1, last1, v2, first2, last2)
+    def find_first_of_if[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(pred: (A, A) => Boolean): Int = FindFirstOf(v1, first1, last1, v2, first2, last2, pred)
+
     def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Any): Unit = ForEach(v, first, last, f)
 
     def generate[A](v: Seq[A], first: Int, last: Int)(gen: Function0[A]): Unit = Generate(v, first, last, gen)

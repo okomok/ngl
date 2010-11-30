@@ -69,5 +69,4 @@ private object EqualRange {
         }
         (__first, __first)
     }
-
 }
