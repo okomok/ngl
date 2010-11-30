@@ -58,4 +58,3 @@ private object MaxElement {
         MinElement(*, first, __last, __comp.reverse)
     }
 }
-

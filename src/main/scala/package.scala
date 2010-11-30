@@ -52,6 +52,8 @@ package object ngl {
 
     def equal[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int): Boolean = Equal(v1, first1, last1, v2, first2)
     def equal_if[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int)(binary_pred: (A1, A2) => Boolean): Boolean = Equal(v1, first1, last1, v2, first2, binary_pred)
+    def mismatch[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int): (Int, Int) = Mismatch(v1, first1, last1, v2, first2)
+    def mismatch_if[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int)(binary_pred: (A1, A2) => Boolean): (Int, Int) = Mismatch(v1, first1, last1, v2, first2, binary_pred)
 
     def fill[A](v: Seq[A], first: Int, last: Int)(value: A): Unit = Fill(v, first, last, value)
     def fill_n[A](v: Seq[A], first: Int)(n: Int)(value: A): Int = FillN(v, first, n, value)
@@ -68,6 +70,8 @@ package object ngl {
     def lexicographical_compare_3way[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(implicit c: Ordering[A]): Int = LexicographicalCompare3way(v1, first1, last1, v2, first2, last2, c)
 
     def merge[A](v1 : Seq[A], first1: Int, last1: Int)(v2 : Seq[A], first2: Int, last2: Int)(^ : Seq[A], result: Int)(implicit c: Ordering[A]): Int = Merge(v1, first1, last1, v2, first2, last2, ^, result, c)
+
+    def nth_element[A](v: Seq[A], first: Int, nth: Int, last: Int)(implicit c: Ordering[A]): Unit = NthElement(v, first, nth, last, c)
 
     def partial_sort[A](v: Seq[A], first: Int, middle: Int, last: Int)(implicit c: Ordering[A]): Unit = PartialSort(v, first, middle, last, c)
 
