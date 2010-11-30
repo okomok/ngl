@@ -70,6 +70,9 @@ package object ngl {
     def find_first_of(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int, last2: Int): Int = FindFirstOf(v1, first1, last1, v2, first2, last2)
     def find_first_of_if[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(pred: (A, A) => Boolean): Int = FindFirstOf(v1, first1, last1, v2, first2, last2, pred)
 
+    def find_end(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int, last2: Int): Int = FindEnd(v1, first1, last1, v2, first2, last2)
+    def find_end_if[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(pred: (A, A) => Boolean): Int = FindEnd(v1, first1, last1, v2, first2, last2, pred)
+
     def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Any): Unit = ForEach(v, first, last, f)
 
     def generate[A](v: Seq[A], first: Int, last: Int)(gen: Function0[A]): Unit = Generate(v, first, last, gen)
@@ -121,6 +124,12 @@ package object ngl {
 
     def reverse(v: Seq[_], first: Int, last: Int): Unit = Reverse(v, first, last)
     def reverse_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int): Int = ReverseCopy(v, first, last, ^, result)
+
+    def search(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int, last2: Int): Int = Search(v1, first1, last1, v2, first2, last2)
+    def search_if[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(pred: (A, A) => Boolean): Int = Search(v1, first1, last1, v2, first2, last2, pred)
+
+    def search_n(v1: Seq[_], first1: Int, last1: Int)(count: Int, value: Any): Int = SearchN(v1, first1, last1, count, value)
+    def search_n_if[A](v1: Seq[A], first1: Int, last1: Int)(count: Int, value: A)(pred: (A, A) => Boolean): Int = SearchN(v1, first1, last1, count, value, pred)
 
     def sort[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = Sort(v, first, last, c)
     def stable_sort[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = StableSort(v, first, last, c)
