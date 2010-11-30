@@ -1,6 +1,6 @@
 
 
-// Uniqueright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -31,24 +31,25 @@
 
 
 package com.github.okomok
-package ngl
+package ngltest
 
 
-private object UniqueCopy {
-    def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_pred: (A, B) => Boolean = EqualTo): Int = {
-        var __first = first
-        var __result = result
+import com.github.okomok.ngl
 
-        var __val = v(__first)
-        ^(__result) = __val
-        __first += 1
-        while (__first != __last) {
-            if (!__binary_pred(__val, v(__first))) {
-                __val = v(__first)
-                __result += 1; ^(__result) = __val
-            }
-            __first += 1
-        }
-        __result + 1
+
+class AdjacentDifferenceTest extends org.scalatest.junit.JUnit3Suite {
+
+    def testAdjacentDifference0 {
+        val numbers = Array(1, 2, 4, 8, 16)
+        val difference = new Array[Int](5)
+
+        val result = ngl.adjacent_difference(numbers, 0, 5)(difference, 0)(_ - _)
+        expect(5)(result)
+        expect(1)(difference(0))
+        expect(1)(difference(1))
+        expect(2)(difference(2))
+        expect(4)(difference(3))
+        expect(8)(difference(4))
     }
+
 }

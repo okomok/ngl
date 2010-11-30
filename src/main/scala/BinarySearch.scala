@@ -1,6 +1,6 @@
 
 
-// Uniqueright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -34,21 +34,9 @@ package com.github.okomok
 package ngl
 
 
-private object UniqueCopy {
-    def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_pred: (A, B) => Boolean = EqualTo): Int = {
-        var __first = first
-        var __result = result
-
-        var __val = v(__first)
-        ^(__result) = __val
-        __first += 1
-        while (__first != __last) {
-            if (!__binary_pred(__val, v(__first))) {
-                __val = v(__first)
-                __result += 1; ^(__result) = __val
-            }
-            __first += 1
-        }
-        __result + 1
+private object BinarySearch {
+    def apply[A](* : Seq[A], __first: Int, __last: Int, __val: A, __comp: Ordering[A]): Boolean = {
+        val __i = LowerBound(*, __first, __last, __val, __comp)
+        __i != __last && !__comp.lt(__val, *(__i))
     }
 }

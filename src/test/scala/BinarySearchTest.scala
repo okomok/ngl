@@ -1,6 +1,6 @@
 
 
-// Uniqueright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -31,24 +31,20 @@
 
 
 package com.github.okomok
-package ngl
+package ngltest
 
 
-private object UniqueCopy {
-    def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_pred: (A, B) => Boolean = EqualTo): Int = {
-        var __first = first
-        var __result = result
+import com.github.okomok.ngl
 
-        var __val = v(__first)
-        ^(__result) = __val
-        __first += 1
-        while (__first != __last) {
-            if (!__binary_pred(__val, v(__first))) {
-                __val = v(__first)
-                __result += 1; ^(__result) = __val
-            }
-            __first += 1
+
+class BinarySearchTest extends org.scalatest.junit.JUnit3Suite {
+
+    def testBinarySearch1 {
+        val arr = new Array[Int](100)
+        for (i <- 0 until 100) {
+            arr(i) = i
         }
-        __result + 1
+        assert(ngl.binary_search(arr, 0, 100)(42))
     }
+
 }

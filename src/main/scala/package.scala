@@ -31,9 +31,12 @@ package object ngl {
 
     def accumulate[A, B](v: Seq[A], first: Int, last: Int)(init: B)(binary_op: (B, A) => B): B = Accumulate(v, first, last, init, binary_op)
 
+    def adjacent_difference[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(binary_op: (A, A) => A): Int = AdjacentDifference(v, first, last, ^, result, binary_op)
+
     def adjacent_find[A](v: Seq[A], first: Int, last: Int): Int = AdjacentFind(v, first, last)
     def adjacent_find_if[A](v: Seq[A], first: Int, last: Int)(binary_pred: (A, A) => Boolean): Int = AdjacentFind(v, first, last, binary_pred)
 
+    def binary_search[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Boolean = BinarySearch(v, first, last, value, c)
     def lower_bound[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Int = LowerBound(v, first, last, value, c)
     def upper_bound[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Int = UpperBound(v, first, last, value, c)
 

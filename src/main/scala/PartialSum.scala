@@ -51,7 +51,6 @@ private object PartialSum {
             ^(__result) = __val;
             __first += 1
         }
-        __result += 1
-        __result
+        __result + 1
     }
 }

@@ -1,6 +1,6 @@
 
 
-// Uniqueright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -34,19 +34,22 @@ package com.github.okomok
 package ngl
 
 
-private object UniqueCopy {
-    def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_pred: (A, B) => Boolean = EqualTo): Int = {
+private object AdjacentDifference {
+    def apply[A, B >: A](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __binary_op: (A, A) => A): Int = {
         var __first = first
         var __result = result
 
+        if (__first == __last) {
+            return __result
+        }
+        ^(__result) = v(__first)
         var __val = v(__first)
-        ^(__result) = __val
         __first += 1
         while (__first != __last) {
-            if (!__binary_pred(__val, v(__first))) {
-                __val = v(__first)
-                __result += 1; ^(__result) = __val
-            }
+            val __tmp = v(__first)
+            __result += 1
+            ^(__result) = __binary_op(__tmp, __val);
+            __val = __tmp
             __first += 1
         }
         __result + 1
