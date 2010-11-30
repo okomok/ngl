@@ -37,6 +37,7 @@ package object ngl {
     def adjacent_find_if[A](v: Seq[A], first: Int, last: Int)(binary_pred: (A, A) => Boolean): Int = AdjacentFind(v, first, last, binary_pred)
 
     def binary_search[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Boolean = BinarySearch(v, first, last, value, c)
+    def equal_range[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): (Int, Int) = EqualRange(v, first, last, value, c)
     def lower_bound[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Int = LowerBound(v, first, last, value, c)
     def upper_bound[A](v: Seq[A], first: Int, last: Int)(value: A)(implicit c: Ordering[A]): Int = UpperBound(v, first, last, value, c)
 
@@ -83,6 +84,8 @@ package object ngl {
     def partial_sort[A](v: Seq[A], first: Int, middle: Int, last: Int)(implicit c: Ordering[A]): Unit = PartialSort(v, first, middle, last, c)
 
     def partial_sum[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(binary_op: (A, A) => A): Int = PartialSum(v, first, last, ^, result, binary_op)
+
+    def partition[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean) = Partition(v, first, last, pred)
 
     def push_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PushHeap(v, first, last, c)
     def pop_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PopHeap(v, first, last, c)
