@@ -1,6 +1,6 @@
 
 
-// Uniqueright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -31,25 +31,20 @@
 
 
 package com.github.okomok
-package ngl
+package ngltest
 
 
-private object AdjacentFind {
-    def apply[A](* : Seq[A], first: Int, __last: Int, __binary_pred: (A, A) => Boolean = EqualTo): Int = {
-        var __first = first
+import com.github.okomok.ngl
 
-        if (__first == __last) {
-            return __last
-        }
-        var __next = __first
-        __next += 1
-        while (__next != __last) {
-            if (__binary_pred(*(__first), *(__next))) {
-                return __first
-            }
-            __first = __next
-            __next += 1
-        }
-        __last
+
+class InnerProductTest extends org.scalatest.junit.JUnit3Suite {
+
+    def testInnerProduct0 {
+        val vector1 = Array(1, 2, 3, 4, 5)
+        val vector2 = Array(1, 2, 3, 4, 5)
+
+        val result = ngl.inner_product(vector1, 0, 5)(vector2, 0)(0)(_ + _)(_ * _)
+        expect(55)(result)
     }
+
 }

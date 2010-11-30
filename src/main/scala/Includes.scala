@@ -1,6 +1,6 @@
 
 
-// Replaceright Shunsuke Sogame 2010.
+// Copyright Shunsuke Sogame 2010.
 // Distributed under the terms of an MIT-style license.
 
 
@@ -34,27 +34,21 @@ package com.github.okomok
 package ngl
 
 
-private object Transform {
-    def apply[A, B](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __opr: A => B): Int = {
-        var __first = first
-        var __result = result
-
-        while (__first != __last) {
-            ^(__result) = __opr(v(__first))
-            __first += 1; __result += 1
-        }
-        __result
-    }
-
-    def apply[A, B, C](v1 : Seq[A], first1: Int, __last1: Int, v2 : Seq[B], first2: Int,  ^ : Seq[C], result: Int, __binary_op: (A, B) => C): Int = {
+private object Includes {
+    def apply[A](v1: Seq[A], first1: Int, __last1: Int, v2: Seq[A], first2: Int, __last2: Int, __comp: Ordering[A]): Boolean = {
         var __first1 = first1
         var __first2 = first2
-        var __result = result
 
-        while (__first1 != __last1) {
-            ^(__result) = __binary_op(v1(__first1), v2(__first2))
-            __first1 += 1; __first2 += 1; __result += 1
+        while (__first1 != __last1 && __first2 != __last2) {
+            val way = __comp.compare(v1(__first1), v2(__first2))
+            if (way > 0) {
+                return false
+            } else if (way < 0) {
+                __first1 += 1
+            } else {
+                __first1 += 1; __first2 += 1
+            }
         }
-        __result
+        __first2 == __last2
     }
 }

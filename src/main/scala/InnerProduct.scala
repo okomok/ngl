@@ -34,27 +34,17 @@ package com.github.okomok
 package ngl
 
 
-private object Transform {
-    def apply[A, B](v : Seq[A], first: Int, __last: Int, ^ : Seq[B], result: Int, __opr: A => B): Int = {
-        var __first = first
-        var __result = result
-
-        while (__first != __last) {
-            ^(__result) = __opr(v(__first))
-            __first += 1; __result += 1
-        }
-        __result
-    }
-
-    def apply[A, B, C](v1 : Seq[A], first1: Int, __last1: Int, v2 : Seq[B], first2: Int,  ^ : Seq[C], result: Int, __binary_op: (A, B) => C): Int = {
-        var __first1 = first1
-        var __first2 = first2
-        var __result = result
+private object InnerProduct {
+    def apply[A](v1: Seq[A], first1: Int, __last1: Int, v2: Seq[A], first2: Int, Init: A,
+        __binary_op1: (A, A) => A, __binary_op2: (A, A) => A): A =
+    {
+        var __first1 = first1; var __first2 = first2
+        var _Init = Init
 
         while (__first1 != __last1) {
-            ^(__result) = __binary_op(v1(__first1), v2(__first2))
-            __first1 += 1; __first2 += 1; __result += 1
+            _Init = __binary_op1(_Init, __binary_op2(v1(__first1), v2(__first2)))
+            __first1 += 1; __first2 += 1
         }
-        __result
+        _Init
     }
 }
