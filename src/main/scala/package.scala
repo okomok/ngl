@@ -95,10 +95,10 @@ package object ngl {
     def remove_copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(pred: A => Boolean): Int = RemoveCopyIf(v, first, last, ^, result, pred)
 
     def replace[A](v: Seq[A], first: Int, last: Int)(old_value: Any, new_value: A): Unit = Replace(v, first, last, old_value, new_value)
-    def replace_if[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean, new_value: A): Unit = ReplaceIf(v, first, last, pred, new_value)
+    def replace_if[A](v: Seq[A], first: Int, last: Int)(new_value: A)(pred: A => Boolean): Unit = ReplaceIf(v, first, last, pred, new_value)
 
     def replace_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(old_value: Any, new_value: A): Int = ReplaceCopy(v, first, last, ^, result, old_value, new_value)
-    def replace_copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(pred: A => Boolean, new_value: A): Int = ReplaceCopyIf(v, first, last, ^, result, pred, new_value)
+    def replace_copy_if[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(new_value: A)(pred: A => Boolean): Int = ReplaceCopyIf(v, first, last, ^, result, pred, new_value)
 
     def reverse[A](v: Seq[A], first: Int, last: Int): Unit = Reverse(v, first, last)
 
