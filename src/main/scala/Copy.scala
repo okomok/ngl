@@ -17,14 +17,14 @@ package ngl
 
 private object Copy {
     def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], result: Int): Int = {
-        CopyIf(v, __first, __last, ^, result, { (e: A) => true })
+        CopyIf(v, __first, __last, ^, result, { (x: A) => true })
     }
 }
 
 private object CopyIf {
     def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], result: Int, __pred: A => Boolean): Int = {
         var __result = result
-        ForEach(v, __first, __last, { (e: A) => if (__pred(e)) { ^(__result) = e; __result += 1 } })
+        ForEach(v, __first, __last, { (x: A) => if (__pred(x)) { ^(__result) = x; __result += 1 } })
         __result
     }
 }

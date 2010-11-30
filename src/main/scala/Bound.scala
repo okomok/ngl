@@ -60,6 +60,8 @@ private object LowerBound {
 
 private object UpperBound {
     def apply[A](* : Seq[A], first: Int, __last: Int, __val: A, __comp: Ordering[A]): Int = {
-        LowerBound(*, first, __last, __val, new Ordering[A] { override def compare(x: A, y: A) = - __comp.compare(y, x) })
+        LowerBound(*, first, __last, __val, Ordering.fromLessThan[A] {
+            (x, y) => __comp.lteq(x, y)
+        })
     }
 }

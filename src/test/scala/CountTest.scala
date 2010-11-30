@@ -31,26 +31,26 @@
 
 
 package com.github.okomok
-package ngl
+package ngltest
 
 
-private object Remove {
-    def apply[A](v: Seq[A], first: Int, __last: Int, x: Any): Int = {
-        RemoveIf(v, first, __last, (_: A) == x)
+import com.github.okomok.ngl
+
+
+class CountTest extends org.scalatest.junit.JUnit3Suite {
+
+    def test0 {
+        val numbers = Array(1, 2, 4, 1, 2, 4, 1, 2, 4, 1)
+        val _numbers = ngl.Seq.from(numbers)
+        val result = ngl.count(_numbers, _numbers.begin, _numbers.end)(1)
+        expect(4)(result)
     }
-}
 
-private object RemoveIf {
-    def apply[A](v: Seq[A], first: Int, __last: Int, __pred: A => Boolean): Int = {
-        var __first = first
-
-        __first = FindIf(v, __first, __last, __pred)
-        if ( __first == __last ) {
-            __first
-        } else {
-            var __next = __first
-            __next += 1
-            RemoveCopyIf(v, __next, __last, v, __first, __pred)
-        }
+    def testIf0 {
+        val numbers = Array(1, 2, 4, 1, 2, 4, 1, 2, 4, 1)
+        val _numbers = ngl.Seq.from(numbers)
+        val result = ngl.count_if(_numbers, _numbers.begin, _numbers.end)(_ == 4)
+        expect(3)(result)
     }
+
 }

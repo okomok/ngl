@@ -11,7 +11,7 @@ package ngl
 private object Accumulate {
     def apply[A, B](v: Seq[A], __first: Int, __last: Int, init: B, __binary_op: (B, A) => B): B = {
         var __init = init
-        ForEach(v, __first, __last, { (e: A) => __init = __binary_op(__init, e) })
+        ForEach(v, __first, __last, { (x: A) => __init = __binary_op(__init, x) })
         __init
     }
 }

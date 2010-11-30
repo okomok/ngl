@@ -53,7 +53,7 @@ trait Seq[+A] extends PartialFunction[Int, A] { self =>
      * the specified element.
      *
      * @param   i   index of element to replace.
-     * @param   e   element to be stored at the specified position.
+     * @param   x   element to be stored at the specified position.
      * @throws  NotWritableException if not overridden.
      */
     @Annotation.pre("writable")

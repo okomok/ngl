@@ -9,8 +9,8 @@ package ngl
 
 
 private object RemoveCopy {
-    def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], __result: Int, e: Any): Int = {
-        RemoveCopyIf(v, __first, __last, ^, __result, (_: A) == e)
+    def apply[A, B >: A](v : Seq[A], __first: Int, __last: Int, ^ : Seq[B], __result: Int, x: Any): Int = {
+        RemoveCopyIf(v, __first, __last, ^, __result, (_: A) == x)
     }
 }
 
