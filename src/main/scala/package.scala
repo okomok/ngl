@@ -130,6 +130,9 @@ package object ngl {
     def reverse(v: Seq[_], first: Int, last: Int): Unit = Reverse(v, first, last)
     def reverse_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int): Int = ReverseCopy(v, first, last, ^, result)
 
+    def rotate(v: Seq[_], first: Int, middle: Int, last: Int): Int = Rotate(v, first, middle, last)
+    def rotate_copy[A](v : Seq[A], first: Int, middle: Int, last: Int)(^ : Seq[_ >: A], result: Int): Int = RotateCopy(v, first, middle, last, ^, result)
+
     def search(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int, last2: Int): Int = Search(v1, first1, last1, v2, first2, last2)
     def search_if[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(pred: (A, A) => Boolean): Int = Search(v1, first1, last1, v2, first2, last2, pred)
 
