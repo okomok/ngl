@@ -86,6 +86,7 @@ package object ngl {
     def lexicographical_compare_3way[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(implicit c: Ordering[A]): Int = LexicographicalCompare3way(v1, first1, last1, v2, first2, last2, c)
 
     def merge[A](v1 : Seq[A], first1: Int, last1: Int)(v2 : Seq[A], first2: Int, last2: Int)(^ : Seq[A], result: Int)(implicit c: Ordering[A]): Int = Merge(v1, first1, last1, v2, first2, last2, ^, result, c)
+    def inplace_merge[A](v: Seq[A], first: Int, middle: Int, last: Int)(implicit c: Ordering[A]): Unit = InplaceMerge(v, first, middle, last, c)
 
     def next_permutation[A](v : Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Boolean = NextPermutation(v, first, last, c)
     def prev_permutation[A](v : Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Boolean = PrevPermutation(v, first, last, c)
