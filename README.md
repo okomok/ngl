@@ -67,12 +67,8 @@ In `ngl` it is declared as:
 
 Append this in your project definition:
 
-    val mada = "com.github.okomok" %% "ngl" % "0.1.0"
-    val okomokSnapshots = "okomok snapshots" at "http://okomok.github.com/maven-repo/releases"
-
-When you use `arm` or `reactive` package,
-setup the continuations plugin following [this](http://code.google.com/p/simple-build-tool/wiki/CompilerPlugins "CompilerPlugins").
-
+    val ngl = "com.github.okomok" %% "ngl" % "0.1.0"
+    val okomok = "okomok" at "http://okomok.github.com/maven-repo/releases"
 
 
 
