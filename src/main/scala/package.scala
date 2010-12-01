@@ -93,6 +93,7 @@ package object ngl {
     def nth_element[A](v: Seq[A], first: Int, nth: Int, last: Int)(implicit c: Ordering[A]): Unit = NthElement(v, first, nth, last, c)
 
     def partial_sort[A](v: Seq[A], first: Int, middle: Int, last: Int)(implicit c: Ordering[A]): Unit = PartialSort(v, first, middle, last, c)
+    def partial_sort_copy[A](v : Seq[A], first: Int, last: Int)(^ : Seq[A], result_first: Int, result_last: Int)(implicit c: Ordering[A]) = PartialSortCopy(v, first, last, ^, result_first, result_last, c)
 
     def partial_sum[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(binary_op: (A, A) => A): Int = PartialSum(v, first, last, ^, result, binary_op)
 
