@@ -34,8 +34,6 @@ package com.github.okomok
 package ngl
 
 
-// PushHeap
-
 private object PushHeap {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         __apply(*, __first, (__last - __first) - 1, 0, *(__last - 1), __comp)
@@ -55,8 +53,6 @@ private object PushHeap {
 }
 
 
-// PopHeap
-
 private object PopHeap {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
         __apply(*, __first, __last - 1, __last - 1, *(__last - 1), __comp)
@@ -68,8 +64,6 @@ private object PopHeap {
     }
 }
 
-
-// MakeHeap
 
 private object MakeHeap {
     def apply[A](* : Seq[A], __first: Int, __last: Int, __comp: Ordering[A]) {
@@ -90,8 +84,6 @@ private object MakeHeap {
 }
 
 
-// SortHeap
-
 private object SortHeap {
     def apply[A](* : Seq[A], __first: Int, last: Int, __comp: Ordering[A]) {
         var __last = last
@@ -103,8 +95,6 @@ private object SortHeap {
     }
 }
 
-
-// AdjustHeap
 
 private object AdjustHeap {
     def apply[A](* : Seq[A], __first: Int, holeIndex: Int, __len: Int, __value: A, __comp: Ordering[A]) {

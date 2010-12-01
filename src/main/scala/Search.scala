@@ -120,7 +120,7 @@ private object SearchN {
                 return __last
             }
         }
-        return __last
+        __last
     }
 }
 

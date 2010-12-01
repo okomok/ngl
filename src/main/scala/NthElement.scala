@@ -49,6 +49,6 @@ private object NthElement {
                 __last = __cut
             }
         }
-        InsertionSort(*, __first, __last, __comp);
+        InsertionSort(*, __first, __last, __comp)
     }
 }

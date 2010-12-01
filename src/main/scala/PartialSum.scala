@@ -48,7 +48,7 @@ private object PartialSum {
         while (__first != __last) {
             __val = __binary_op(__val, v(__first))
             __result += 1
-            ^(__result) = __val;
+            ^(__result) = __val
             __first += 1
         }
         __result + 1

@@ -66,9 +66,9 @@ private object MergeSortWithBuffer {
         ChunkInsertionSort(*, __first, __last, __step_size, __comp)
 
         while (__step_size < __len) {
-            loop(*, __first, __last, ^, __buffer, __step_size, __comp);
+            loop(*, __first, __last, ^, __buffer, __step_size, __comp)
             __step_size *= 2
-            loop(^, __buffer, __buffer_last, *, __first, __step_size, __comp);
+            loop(^, __buffer, __buffer_last, *, __first, __step_size, __comp)
             __step_size *= 2
         }
     }
