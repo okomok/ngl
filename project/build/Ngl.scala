@@ -26,5 +26,5 @@ class Ngl(info: ProjectInfo) extends DefaultProject(info) {
                 <url>http://okomok.github.com/maven-repo/snapshots</url>
             </repository>
         </distributionManagement>
-    lazy val publishTo = Resolver.file("Publish", new java.io.File("../maven-repo/snapshots/"))
+    lazy val publishTo = Resolver.file("Publish", new java.io.File("../maven-repo/releases/"))
 }

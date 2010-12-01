@@ -1,8 +1,13 @@
 
-# ngl 0.1.0-SNAPSHOT
+# ngl 0.1.0
 
 `ngl`(Nonstandard Generics Library) ports C++ STL algorithms to Scala.
-The implementation is mainly based upon [STLport].
+The implementation is mainly based upon [STLport]:
+
+    val numbers = Array(5, 2, 4, 3, 1, 6)
+    ngl.partial_sort(numbers, 0, 3, 6)
+    assert(java.util.Arrays.equals(numbers, Array(1, 2, 3, 5, 4, 6)))
+
 
 
 
@@ -25,6 +30,8 @@ _OutputRange_ is a pair represented by `(ngl.Seq[A], Int)`.
 These concepts don't appear as Scala types; for maximum efficiency.
 
 
+
+
 ## Seq Synopsis
 
 `ngl.Seq` is a trivial array interface:
@@ -36,8 +43,8 @@ These concepts don't appear as Scala types; for maximum efficiency.
         def update(i: Int, x: A): Unit
     }
 
-Note that `Seq` doesn't always guarantee indices in `[0, length-of-Seq)`.
-First you should call `begin` and `end` to build a valid Range.
+`Seq` doesn't always guarantee indices in `[0, length-of-Seq)`.
+You must call `begin` and `end` in polymorphic methods.
 
 
 
@@ -52,6 +59,20 @@ For example, STL contains the `copy` function:
 In `ngl` it is declared as:
 
     def copy[A](in: Seq[A], first: Int, last: Int)(out: Seq[_ >: A], result: Int): Int
+
+
+
+
+## Setup Dependencies for sbt
+
+Append this in your project definition:
+
+    val mada = "com.github.okomok" %% "ngl" % "0.1.0"
+    val okomokSnapshots = "okomok snapshots" at "http://okomok.github.com/maven-repo/releases"
+
+When you use `arm` or `reactive` package,
+setup the continuations plugin following [this](http://code.google.com/p/simple-build-tool/wiki/CompilerPlugins "CompilerPlugins").
+
 
 
 
