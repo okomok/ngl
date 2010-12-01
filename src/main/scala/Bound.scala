@@ -54,14 +54,38 @@ private object LowerBound {
                 __len = __half
             }
         }
-        return __first
+        __first
     }
 }
 
+
 private object UpperBound {
+    def apply[A](* : Seq[A], first: Int, __last: Int, __val: A, __comp: Ordering[A]): Int = {
+        var __first = first
+
+        var __len = __last - __first
+        var __half = 0
+
+        while (__len > 0) {
+            __half = __len >> 1
+            var __middle = __first
+            __middle += __half
+            if (__comp.lt(__val, *(__middle))) {
+                __len = __half
+            } else {
+                __first = __middle
+                __first += 1
+                __len = __len - __half - 1
+            }
+        }
+        __first
+    }
+
+/* This also is ok.
     def apply[A](* : Seq[A], first: Int, __last: Int, __val: A, __comp: Ordering[A]): Int = {
         LowerBound(*, first, __last, __val, Ordering.fromLessThan[A] {
             (x, y) => __comp.lteq(x, y)
         })
     }
+*/
 }
