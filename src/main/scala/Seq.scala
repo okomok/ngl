@@ -27,13 +27,12 @@ object Seq {
     @Annotation.hasNthIndex
     implicit def fromJList[A](from: java.util.List[A]): Seq[A] = new FromJList(from)
 
-    @Annotation.hasNthIndex
     def apply[A](xs: A*): Seq[A] = from(xs)
 
 }
 
 
-trait Seq[+A] extends PartialFunction[Int, A] { self =>
+trait Seq[+A] extends PartialFunction[Int, A] {
 
     /**
      * @return  begin index, which is NOT guaranteed to be <code>0</code>.
@@ -70,5 +69,10 @@ trait Seq[+A] extends PartialFunction[Int, A] { self =>
      * @return  <code>(begin <= i) && (i < end)</code>, possibly overridden in subclasses.
      */
     override def isDefinedAt(i: Int): Boolean = (begin <= i) && (i < end)
+
+    /**
+     * @return  a region.
+     */
+    def apply(i: Int, j: Int): Seq[A] = Region(this, i, j)
 
 }
