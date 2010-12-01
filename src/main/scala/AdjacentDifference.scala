@@ -48,7 +48,7 @@ private object AdjacentDifference {
         while (__first != __last) {
             val __tmp = v(__first)
             __result += 1
-            ^(__result) = __binary_op(__tmp, __val);
+            ^(__result) = __binary_op(__tmp, __val)
             __val = __tmp
             __first += 1
         }

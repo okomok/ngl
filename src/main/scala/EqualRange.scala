@@ -53,7 +53,7 @@ private object EqualRange {
             } else if (way > 0) {
                 __len = __half
             } else {
-                val __left = LowerBound(*, __first, __middle, __val, __comp);
+                val __left = LowerBound(*, __first, __middle, __val, __comp)
                 //Small optim: If lower_bound haven't found an equivalent value
                 //there is no need to call upper_bound.
                 if (__comp.lt(*(__left), __val)) {

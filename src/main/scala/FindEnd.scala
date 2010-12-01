@@ -44,7 +44,7 @@ private object FindEnd {
         else {
             var __result = __last1
             while (true) {
-                val __new_result = Search(v1, __first1, __last1, v2, __first2, __last2, __pred);
+                val __new_result = Search(v1, __first1, __last1, v2, __first2, __last2, __pred)
                 if (__new_result == __last1) {
                     return __result
                 }

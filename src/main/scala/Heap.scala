@@ -60,7 +60,7 @@ private object PopHeap {
 
     def __apply[A](* : Seq[A], __first: Int, __last: Int, __result: Int, __value: A, __comp: Ordering[A]) {
         *(__result) = *(__first)
-        AdjustHeap(*, __first, 0, __last - __first, __value, __comp);
+        AdjustHeap(*, __first, 0, __last - __first, __value, __comp)
     }
 }
 
@@ -100,7 +100,7 @@ private object AdjustHeap {
     def apply[A](* : Seq[A], __first: Int, holeIndex: Int, __len: Int, __value: A, __comp: Ordering[A]) {
         var __holeIndex = holeIndex
 
-        val __topIndex = __holeIndex;
+        val __topIndex = __holeIndex
         var __secondChild = 2 * __holeIndex + 2
         while (__secondChild < __len) {
             if (__comp.lt(*(__first + __secondChild), *(__first + __secondChild - 1))) {

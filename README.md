@@ -37,8 +37,7 @@ These concepts don't appear as Scala types; for maximum efficiency.
     }
 
 Note that `Seq` doesn't always guarantee indices in `[0, length-of-Seq)`.
-First you must call `begin` and `end` to build a valid Range.
-This indirection is significant for STL algorithms.
+First you should call `begin` and `end` to build a valid Range.
 
 
 

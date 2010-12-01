@@ -78,11 +78,11 @@ private object MergeSortWithBuffer {
         var __result = result
         var __step_size = step_size
 
-        val __two_step = 2 * __step_size;
+        val __two_step = 2 * __step_size
 
         while (__last - __first >= __two_step) {
             __result = Merge(*, __first, __first + __step_size, *, __first + __step_size, __first + __two_step, ^, __result, __comp)
-            __first += __two_step;
+            __first += __two_step
         }
         __step_size = java.lang.Math.min(__last - __first, __step_size)
 

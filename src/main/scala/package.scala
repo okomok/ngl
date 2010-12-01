@@ -57,6 +57,7 @@ package object ngl {
     def median[A](x: A, y: A, z: A)(implicit c: Ordering[A]): A = Median(x, y, z, c)
 
     def equal(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int): Boolean = Equal(v1, first1, last1, v2, first2)
+    //def equal(v1: Seq[_])(v2: Seq[_]): Boolean = equal(v1, v1.begin, v1.end)(v2, v2.begin)
     def equal_if[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int)(binary_pred: (A1, A2) => Boolean): Boolean = Equal(v1, first1, last1, v2, first2, binary_pred)
     def mismatch(v1: Seq[_], first1: Int, last1: Int)(v2: Seq[_], first2: Int): (Int, Int) = Mismatch(v1, first1, last1, v2, first2)
     def mismatch_if[A1, A2](v1: Seq[A1], first1: Int, last1: Int)(v2: Seq[A2], first2: Int)(binary_pred: (A1, A2) => Boolean): (Int, Int) = Mismatch(v1, first1, last1, v2, first2, binary_pred)
@@ -74,6 +75,7 @@ package object ngl {
     def find_end_if[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(pred: (A, A) => Boolean): Int = FindEnd(v1, first1, last1, v2, first2, last2, pred)
 
     def for_each[A](v: Seq[A], first: Int, last: Int)(f: A => Any): Unit = ForEach(v, first, last, f)
+    //def for_each[A](v: Seq[A])(f: A => Any): Unit = for_each(v, v.begin, v.end)(f)
 
     def generate[A](v: Seq[A], first: Int, last: Int)(gen: Function0[A]): Unit = Generate(v, first, last, gen)
     def generate_n[A](v: Seq[A], first: Int)(n: Int)(gen: Function0[A]): Unit = GenerateN(v, first, n, gen)
@@ -130,6 +132,11 @@ package object ngl {
 
     def search_n(v1: Seq[_], first1: Int, last1: Int)(count: Int, value: Any): Int = SearchN(v1, first1, last1, count, value)
     def search_n_if[A](v1: Seq[A], first1: Int, last1: Int)(count: Int, value: A)(pred: (A, A) => Boolean): Int = SearchN(v1, first1, last1, count, value, pred)
+
+    def set_union[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(^ : Seq[_ >: A], result: Int)(implicit c: Ordering[A]): Int = SetUnion(v1, first1, last1, v2, first2, last2, ^, result, c)
+    def set_intersection[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(^ : Seq[_ >: A], result: Int)(implicit c: Ordering[A]): Int = SetIntersection(v1, first1, last1, v2, first2, last2, ^, result, c)
+    def set_difference[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(^ : Seq[_ >: A], result: Int)(implicit c: Ordering[A]): Int = SetDifference(v1, first1, last1, v2, first2, last2, ^, result, c)
+    def set_symmetric_difference[A](v1: Seq[A], first1: Int, last1: Int)(v2: Seq[A], first2: Int, last2: Int)(^ : Seq[_ >: A], result: Int)(implicit c: Ordering[A]): Int = SetSymmetricDifference(v1, first1, last1, v2, first2, last2, ^, result, c)
 
     def sort[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = Sort(v, first, last, c)
     def stable_sort[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = StableSort(v, first, last, c)
