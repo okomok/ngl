@@ -79,4 +79,44 @@ class PartitionTest extends org.scalatest.junit.JUnit3Suite {
         expect(10)(c)
     }
 
+
+    def testStablePartition0 {
+        val numbers = Array(10, 5, 11, 20, 6, -2)
+
+        var c = 0
+        ngl.stable_partition(numbers, 0, 6) { x =>
+            c += 1
+            x < 10
+        }
+
+        expect(5)(numbers(0))
+        expect(6)(numbers(1))
+        expect(-2)(numbers(2))
+        expect(10)(numbers(3))
+        expect(11)(numbers(4))
+        expect(20)(numbers(5))
+        expect(6)(c)
+    }
+
+    def testStablePartition1 {
+        val numbers = Array(5, 5, 2, 10, 0, 12, 5, 0, 0, 19)
+
+        var c = 0
+        ngl.stable_partition(numbers, 0, 10) { x =>
+            c += 1
+            x < 11
+        }
+
+        expect(5)(numbers(0))
+        expect(5)(numbers(1))
+        expect(2)(numbers(2))
+        expect(10)(numbers(3))
+        expect(0)(numbers(4))
+        expect(5)(numbers(5))
+        expect(0)(numbers(6))
+        expect(0)(numbers(7))
+        expect(12)(numbers(8))
+        expect(19)(numbers(9))
+        expect(10)(c)
+    }
 }

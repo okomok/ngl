@@ -98,6 +98,7 @@ package object ngl {
     def partial_sum[A](v : Seq[A], first: Int, last: Int)(^ : Seq[_ >: A], result: Int)(binary_op: (A, A) => A): Int = PartialSum(v, first, last, ^, result, binary_op)
 
     def partition[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean) = Partition(v, first, last, pred)
+    def stable_partition[A](v: Seq[A], first: Int, last: Int)(pred: A => Boolean) = StablePartition(v, first, last, pred)
 
     def push_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PushHeap(v, first, last, c)
     def pop_heap[A](v: Seq[A], first: Int, last: Int)(implicit c: Ordering[A]): Unit = PopHeap(v, first, last, c)

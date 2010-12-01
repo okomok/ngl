@@ -103,7 +103,7 @@ private object SetDifference {
                 __first2 += 1
             }
         }
-        Copy(v1, __first1, __last1, ^, __result);
+        Copy(v1, __first1, __last1, ^, __result)
     }
 }
 
